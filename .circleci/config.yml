@@ -18,7 +18,7 @@ jobs:
     # working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
-
+      - run: ssh -oStrictHostKeyChecking=no -v $VM_USER@$VM_IP "./run.sh"
       # specify any bash command here prefixed with `run: `
       # - run: go get -v -t -d ./...
       # - run: go test -v ./...
