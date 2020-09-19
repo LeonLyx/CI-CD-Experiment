@@ -1,10 +1,25 @@
 version: 2
 jobs:
-  build:
+  deploy:
+    working_directory: ~/experiment
     docker:
-      
       - image: circleci/golang:1.9
 
     steps:
       - checkout
-      - run: ssh -oStrictHostKeyChecking=no -v $VM_USER@$VM_IP "cd CI-CD-Experiment && ./run.sh"
+      - run: 
+          command: |
+            rsync -a --delete ~/experiment/ $VM_USER@$VM_IP:/home/$VM_USER/experiment
+            ssh $VM_USER@$VM_IP
+            cd /home/$VM_USER/experiment
+            ./run.sh
+
+workflows:
+  version: 2
+  deploy-to-vps:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
+
