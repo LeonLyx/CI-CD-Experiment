@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run: 
           command: |
-            apt-get -y update && apt-get -y install rsync
+            sudo apt-get -y update && sudo apt-get -y install rsync
             rsync -a --delete ~/experiment/ $VM_USER@$VM_IP:/home/$VM_USER/experiment
             ssh $VM_USER@$VM_IP
             cd /home/$VM_USER/experiment
