@@ -14,7 +14,7 @@ jobs:
             rsync -a --delete ~/experiment/ $VM_USER@$VM_IP:/home/$VM_USER/experiment
             ssh -oStrictHostKeyChecking=no -v $VM_USER@$VM_IP "
               echo $PATH;
-              echo $USER;
+              pwd;
               cd /home/$VM_USER/experiment && ./run.sh
             "
 
