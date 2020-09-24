@@ -15,6 +15,7 @@ jobs:
             ssh -oStrictHostKeyChecking=no -v $VM_USER@$VM_IP "
               echo $PATH;
               echo $(pwd);
+              echo $(go help);
               cd /home/$VM_USER/experiment && ./run.sh
             "
 
