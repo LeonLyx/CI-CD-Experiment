@@ -16,7 +16,9 @@ jobs:
               echo $PATH;
               echo $(pwd);
               echo $(go help);
-              cd /home/$VM_USER/experiment && ./run.sh
+              cd /home/$VM_USER/experiment;
+              go build main.go;
+              ./main;
             "
 
 workflows:
